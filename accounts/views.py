@@ -14,9 +14,12 @@ def login_view(request):
 
         if user:
             login(request, user)
-            return redirect('/')
-        else:
-            messages.error(request, 'Username atau password salah')
+
+            if user.role == 'admin':
+                return redirect('admin_dashboard')
+            return redirect('home')
+
+        messages.error(request, 'Username atau password salah')
 
     return render(request, 'accounts/login.html')        
 
@@ -32,7 +35,8 @@ def register_view(request):
             user = User.objects.create_user(
                 username=username,
                 email=email,
-                password=password
+                password=password,
+                role='customer'
             )
             login(request, user)
             return redirect('/')
