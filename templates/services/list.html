@@ -1,0 +1,11 @@
+<h2>Available Services</h2>
+
+<ul>
+  {% for service in services %}
+  <li>
+    {{ service.name }} — {{ service.duration }} min — Rp {{ service.price }}
+  </li>
+  {% empty %}
+  <li>No services available</li>
+  {% endfor %}
+</ul>
