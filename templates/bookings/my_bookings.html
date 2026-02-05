@@ -1,0 +1,12 @@
+<h2>Booking Saya</h2>
+
+<ul>
+  {% for booking in bookings %}
+  <li>
+    {{ booking.service }} - {{ booking.booking_date }} {{ booking.booking_time
+    }} - {{ booking.status }}
+  </li>
+  {% empty %}
+  <li>Belum ada booking</li>
+  {% endfor %}
+</ul>
